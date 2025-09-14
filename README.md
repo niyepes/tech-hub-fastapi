@@ -1,7 +1,7 @@
 # tech-hub-fastapi
 Este repositorio contiene el backend de una aplicación que colecciona recursos de programación, hecha con Python y FastAPI
 
-#Pasos para ejecutar el proyecto
+## Pasos para ejecutar el proyecto
 Instalar el archivo de requirements.txt
 
 ```bash
