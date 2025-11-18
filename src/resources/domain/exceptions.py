@@ -1,2 +1,3 @@
 class UrlNotValidException(Exception):
-    pass
+    def __init__(self) -> None:
+        super().__init__("The provided URL is not valid.")

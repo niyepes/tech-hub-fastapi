@@ -1,6 +1,8 @@
 from resources.application.create_resource import CreateResource
 from resources.domain.models import Resource
+from resources.domain.value_objects import ResourceUrl
 from resources.application.create_resource import CreateResourceCommand
+from resources.domain.exceptions import UrlNotValidException
 
 import pytest as pytest
 
@@ -18,21 +20,11 @@ class TestCreateResource:
     def test_create_resource(self) -> None:
         resource_repository = FakeResourceRepository()
         CreateResource(resource_repository).execute(
-            CreateResourceCommand(resource_url="resource-url-example")
+            CreateResourceCommand(resource_url="https://google.com")
         )
         resources = resource_repository.all()
         assert len(resources) == 1
-        assert resources[0].get_url() == "resource-url-example"
-
-    def test_create_resource(self) -> None:
-        resource_repository = FakeResourceRepository()
-        CreateResource(resource_repository).execute(
-            CreateResourceCommand(resource_url="resource-url-example")
-        )
-        resources = resource_repository.all()
-        assert len(resources) == 1
-        assert resources[0].get_url() == "resource-url-example"
-
+        assert resources[0].get_url() == ResourceUrl(value="https://google.com")
     def test_raise_exception_when_resource_url_is_not_valid (self) -> None:
         resource_repository = FakeResourceRepository()
 
