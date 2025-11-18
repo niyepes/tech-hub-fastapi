@@ -20,5 +20,5 @@ class TestCreateResource:
         )
         resources = resource_repository.all()
         assert len(resources) == 1
-        assert resources[0].url == "resource-url-example"
+        assert resources[0].get_url() == "resource-url-example"
 
