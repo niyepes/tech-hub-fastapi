@@ -24,3 +24,18 @@ class TestSQLModelResourceRepository:
             statement = select(ResourceModel)
             resource = session.exec(statement).first()
             resource.url == "https://google.com"
+
+    def test_returns_all_resources(self) -> None:
+        
+        #Arrange/Given
+        with Session(engine) as session:
+            session.add(ResourceModel(url="https://google.com"))
+            session.commit()
+
+        #Act/When
+        resources = SQLModelResourceRepository().all()
+
+        #Assert/Then
+        assert len(resources) == 1
+        assert resources[0] == Resource(ResourceUrl(value="https://google.com"))
+
