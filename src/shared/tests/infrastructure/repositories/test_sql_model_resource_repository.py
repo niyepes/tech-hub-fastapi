@@ -4,14 +4,18 @@ from resources.domain.models import Resource
 from resources.domain.value_objects import ResourceUrl
 from resources.infrastructure.repositories import SQLModelResourceRepository, engine, ResourceModel
 
+
+@pytest.fixture(autouse=True)
+def create_test_database():
+    # Limpia la DB y crea todas las tablas para cada test
+    SQLModel.metadata.drop_all(engine)
+    SQLModel.metadata.create_all(engine)
+    yield
+    # Limpia al final también (opcional)
+    SQLModel.metadata.drop_all(engine)
+
 class TestSQLModelResourceRepository:
 
-    @pytest.fixture(autouse=True)
-    def clean_up_database(self):
-        yield
-        SQLModel.metadata.drop_all(engine)
-
-    
     def test_save_resource_to_database(self)-> None:
         
         #Arrange/Given
@@ -37,5 +41,5 @@ class TestSQLModelResourceRepository:
 
         #Assert/Then
         assert len(resources) == 1
-        assert resources[0] == Resource(ResourceUrl(value="https://google.com"))
+        assert resources[0].get_url() == ResourceUrl(value="https://google.com")
 
