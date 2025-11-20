@@ -1,9 +1,16 @@
-from sqlmodel import Session, select
+import pytest
+from sqlmodel import SQLModel, Session, select
 from resources.domain.models import Resource
 from resources.domain.value_objects import ResourceUrl
 from resources.infrastructure.repositories import SQLModelResourceRepository, engine, ResourceModel
 
 class TestSQLModelResourceRepository:
+
+    @pytest.fixture(autouse=True)
+    def clean_up_database(self):
+        yield
+        SQLModel.metadata.drop_all(engine)
+
     
     def test_save_resource_to_database(self)-> None:
         
