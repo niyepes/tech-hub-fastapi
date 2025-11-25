@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 import validators
-from resources.domain.exceptions import UrlNotValidException
+from src.resources.domain.exceptions import UrlNotValidException
 
 @dataclass(frozen=True,kw_only=True)
 class ResourceUrl:

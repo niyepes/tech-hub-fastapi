@@ -1,8 +1,8 @@
 from sqlmodel import SQLModel, Field, create_engine, Session, select
 
-from resources.domain.models import Resource
-from resources.domain.repositories import ResourceRepository
-from resources.domain.value_objects import ResourceUrl
+from src.resources.domain.models import Resource
+from src.resources.domain.repositories import ResourceRepository
+from src.resources.domain.value_objects import ResourceUrl
 
 class ResourceModel(SQLModel, table=True):
     id: int | None = Field(default=None, primary_key=True)

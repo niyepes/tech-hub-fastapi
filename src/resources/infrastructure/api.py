@@ -1,8 +1,8 @@
 from fastapi import APIRouter, FastAPI, Request
 from pydantic import BaseModel
-from resources.application.create_resource import CreateResource, CreateResourceCommand
-from resources.domain.models import Resource
-from resources.infrastructure.repositories import SQLModelResourceRepository
+from src.resources.application.create_resource import CreateResource, CreateResourceCommand
+from src.resources.domain.models import Resource
+from src.resources.infrastructure.repositories import SQLModelResourceRepository
 
 router = APIRouter()
 

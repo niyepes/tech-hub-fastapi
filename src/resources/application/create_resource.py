@@ -1,6 +1,6 @@
-from resources.domain.repositories import ResourceRepository
-from resources.domain.models import Resource
-from resources.domain.value_objects import ResourceUrl
+from src.resources.domain.repositories import ResourceRepository
+from src.resources.domain.models import Resource
+from src.resources.domain.value_objects import ResourceUrl
 
 from dataclasses import dataclass
 
@@ -8,7 +8,7 @@ from dataclasses import dataclass
 class CreateResourceCommand:
     resource_url : str
 
-class CreateResource:
+class CreateResource: 
     def __init__(self, resource_repository: ResourceRepository):
         self._resource_repository = resource_repository
 

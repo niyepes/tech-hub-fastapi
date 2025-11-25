@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from resources.domain.models import Resource
+from src.resources.domain.models import Resource
 
 class ResourceRepository(ABC):
     @abstractmethod

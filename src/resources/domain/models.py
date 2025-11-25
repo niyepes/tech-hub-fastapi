@@ -1,4 +1,4 @@
-from resources.domain.value_objects import ResourceUrl
+from src.resources.domain.value_objects import ResourceUrl
 
 class Resource:
     
